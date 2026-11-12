@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-12T12:52:13.406963+00:00",
+  "sources": [
+    {
+      "id": 1,
+      "name": "EUR-Lex — Official Journal L acts",
+      "country": "European Union",
+      "kind": "rss",
+      "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
+      "official_domain": "eur-lex.europa.eu",
+      "enabled": 1,
+      "checked_at": "2026-11-12T12:51:56.102923+00:00",
+      "last_ok_at": "2026-11-12T12:51:56.102923+00:00",
+      "last_error": "",
+      "last_items": 1
+    },
+    {
+      "id": 3,
+      "name": "Germany — Federal legislation updates",
+      "country": "Germany",
+      "kind": "rss",
+      "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
+      "official_domain": "gesetze-im-internet.de",
+      "enabled": 1,
+      "checked_at": "2026-11-12T12:52:13.262806+00:00",
+      "last_ok_at": null,
+      "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
+      "last_items": 0
+    },
+    {
+      "id": 2,
+      "name": "UK legislation — New legislation",
+      "country": "United Kingdom",
+      "kind": "atom",
+      "url": "https://www.legislation.gov.uk/new/data.feed",
+      "official_domain": "legislation.gov.uk",
+      "enabled": 1,
+      "checked_at": "2026-11-12T12:52:13.403776+00:00",
+      "last_ok_at": "2026-11-12T12:52:13.403776+00:00",
+      "last_error": "",
+      "last_items": 0
+    }
+  ],
+  "findings": [
+    {
+      "id": "728c5a2b55eed30bc94107c1",
+      "source_id": 1,
+      "title": "CELEX:32026D2479: Commission Implementing Decision (EU) 2026/2479 of 9 November 2026 amending Implementing Decision (EU) 2021/1182 as regards harmonised standards for sterilization of health care products, clinical investigation of medical devices for human subjects, natural rubber latex male condoms, biological evaluation of medical devices, washer-disinfectors, medical electrical equipment and small-bore connectors for liquids and gases in healthcare applications",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026D2479",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026D2479",
+      "legal_reference": "CELEX:32026D2479",
+      "published_at": "2026-11-10",
+      "first_seen": "2026-11-12T12:51:53.956823+00:00",
+      "last_seen": "2026-11-12T12:51:53.956823+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Electrical & lighting"
+      ],
+      "topics": [
+        "Testing & standards"
+      ],
+      "summary": "Official source entry: CELEX:32026D2479: Commission Implementing Decision (EU) 2026/2479 of 9 November 2026 amending Implementing Decision (EU) 2021/1182 as regards harmonised standards for sterilization of health care products, clinical investigation of medical devices for human subjects, natural rubber latex male condoms, biological evaluation of medical devices, washer-disinfectors, medical electrical equipment and small-bore connectors for liquids and gases in healthcare applications. The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    }
+  ],
+  "logs": [
+    {
+      "id": 3,
+      "source_id": 2,
+      "scanned_at": "2026-11-12T12:52:13.403776+00:00",
+      "result": "ok",
+      "items": 0,
+      "error": "",
+      "source_name": "UK legislation — New legislation"
+    },
+    {
+      "id": 2,
+      "source_id": 3,
+      "scanned_at": "2026-11-12T12:52:13.262806+00:00",
+      "result": "failed",
+      "items": 0,
+      "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
+      "source_name": "Germany — Federal legislation updates"
+    },
+    {
+      "id": 1,
+      "source_id": 1,
+      "scanned_at": "2026-11-12T12:51:56.102923+00:00",
+      "result": "ok",
+      "items": 1,
+      "error": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    }
+  ]
+}
