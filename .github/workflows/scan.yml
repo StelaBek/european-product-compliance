@@ -26,7 +26,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run compliance scan
-        run: python scheduled_scan.py
+        run: python scan.py
 
       - name: Save results
         run: |
