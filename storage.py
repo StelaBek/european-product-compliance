@@ -33,6 +33,10 @@ def init_db():
           review_status TEXT NOT NULL DEFAULT 'Needs review',
           notes TEXT NOT NULL DEFAULT '',
           FOREIGN KEY(source_id) REFERENCES sources(id));
+        CREATE TABLE IF NOT EXISTS directory_bookmarks (
+          id INTEGER PRIMARY KEY, country TEXT NOT NULL, name TEXT NOT NULL,
+          url TEXT NOT NULL, added_at TEXT NOT NULL,
+          UNIQUE(country,url));
         CREATE TABLE IF NOT EXISTS scan_log (
           id INTEGER PRIMARY KEY, source_id INTEGER NOT NULL,
           scanned_at TEXT NOT NULL, result TEXT NOT NULL, items INTEGER NOT NULL,
@@ -83,3 +87,25 @@ def update_review(fid,status,notes):
 def logs(limit=200):
     with connection() as con:
         return [dict(x) for x in con.execute('SELECT l.*,s.name AS source_name FROM scan_log l JOIN sources s ON s.id=l.source_id ORDER BY l.id DESC LIMIT ?', (limit,))]
+
+
+def add_bookmark(country,name,url):
+    """Save a portal as a research bookmark, never as an active feed."""
+    now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    with connection() as con:
+        con.execute('INSERT OR IGNORE INTO directory_bookmarks(country,name,url,added_at) VALUES(?,?,?,?)',
+                    (country,name,url,now))
+
+
+def bookmarks(country=None):
+    with connection() as con:
+        if country is None:
+            rows=con.execute('SELECT * FROM directory_bookmarks ORDER BY country,name')
+        else:
+            rows=con.execute('SELECT * FROM directory_bookmarks WHERE country=? ORDER BY name',(country,))
+        return [dict(r) for r in rows]
+
+
+def remove_bookmark(bookmark_id):
+    with connection() as con:
+        con.execute('DELETE FROM directory_bookmarks WHERE id=?',(bookmark_id,))

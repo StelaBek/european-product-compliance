@@ -7,8 +7,9 @@ import pandas as pd
 import streamlit as st
 
 from catalog import CATEGORIES, COUNTRIES, EU, OTHER_EEA, OTHER_EUROPE
-from storage import init_db, findings, sources, logs, add_source, update_review, set_source_enabled
+from storage import init_db, findings, sources, logs, add_source, update_review, set_source_enabled, add_bookmark, bookmarks, remove_bookmark
 from monitor import scan_all, host_allowed
+from source_directory import directory_for, directory_counts
 
 st.set_page_config(page_title='Product Compliance Monitor',page_icon='🛡️',layout='wide',initial_sidebar_state='expanded')
 init_db()
@@ -26,7 +27,7 @@ background:linear-gradient(125deg,rgba(90,112,225,.12),rgba(63,185,164,.08))}
 div[data-testid="stExpander"]{border-radius:13px;border:1px solid rgba(125,140,150,.20)}
 </style>''',unsafe_allow_html=True)
 
-PAGES=['Overview','Findings','Review queue','Source coverage','Settings & sources']
+PAGES=['Overview','Findings','Review queue','Country source directory','Source coverage','Settings & sources']
 with st.sidebar:
     st.markdown('### 🛡️ Compliance Monitor')
     st.caption('European product regulation intelligence')
@@ -122,16 +123,78 @@ elif page=='Review queue':
                         update_review(r['id'],decision,notes)
                         st.rerun()
 
+elif page=='Country source directory':
+    st.title('European official-source directory')
+    st.caption('Select a country to find curated legislation portals and available automated feeds. A portal bookmark does not scan legislation. Countries with no vetted entries are explicitly marked as gaps.')
+    country=st.selectbox('Select jurisdiction',COUNTRIES,index=COUNTRIES.index('Finland'))
+    entries=directory_for(country)
+    active_urls={s['url'] for s in configured if s['enabled']}
+    saved_urls={b['url'] for b in bookmarks(country)}
+    auto=[x for x in entries if x['connector']=='feed']
+    portals=[x for x in entries if x['connector']=='portal']
+    a,b,c=st.columns(3)
+    a.metric('Curated references',len(entries))
+    b.metric('Auto-feed suggestions',len(auto))
+    c.metric('Active configured feeds',sum(s['country']==country and s['enabled'] for s in configured))
+    if not entries:
+        st.warning('No curated entries for this jurisdiction yet. This is a source-coverage gap, not confirmation that no regulation exists.')
+        st.markdown('Use the manual RSS/Atom form under **Settings & sources** once an official feed endpoint has been verified. Do not enter an ordinary homepage as a feed.')
+    if auto:
+        st.subheader('Automated feed connectors')
+        for i, entry in enumerate(auto):
+            with st.container(border=True):
+                st.markdown('**'+entry['name']+'**')
+                st.caption('RSS/Atom feed · '+entry['official_domain'])
+                st.code(entry['url'],language=None)
+                st.caption('A successful scan is required before counting this source as connected.')
+                if entry['url'] in active_urls:
+                    st.success('Already configured and enabled. Check Source coverage for scan health.')
+                elif st.button('Add this official feed',key=f'add_auto_{i}_{country}'):
+                    try:
+                        add_source(entry['name'],entry['country'],entry['kind'],entry['url'],entry['official_domain'])
+                        st.success('Feed added. Run Scan configured feeds to test the endpoint.')
+                        st.rerun()
+                    except Exception:
+                        st.error('Feed already exists or could not be saved. Check Settings & sources.')
+    st.subheader('Official portals & legal-source guides')
+    st.info('These links are for researching national legislation. Saving them does NOT enable automated scanning or validate individual legal amendments.')
+    for i,entry in enumerate(portals):
+        with st.container(border=True):
+            st.markdown('**'+entry['name']+'**')
+            st.caption(entry['publisher']+' · '+entry['description'])
+            st.link_button('Open official portal / guide ↗',entry['url'])
+            if entry['url'] in saved_urls:
+                st.caption('✓ Saved to your research bookmarks')
+            elif st.button('Save research bookmark',key=f'bookmark_{i}_{country}'):
+                add_bookmark(country,entry['name'],entry['url'])
+                st.rerun()
+    st.subheader('Saved research bookmarks')
+    selected=bookmarks(country)
+    if not selected:
+        st.caption('No saved bookmarks for this country.')
+    else:
+        for b in selected:
+            left,right=st.columns([5,1])
+            left.link_button(b['name'],b['url'])
+            if right.button('Remove',key='remove_bm_'+str(b['id'])):
+                remove_bookmark(b['id'])
+                st.rerun()
+    st.divider()
+    st.markdown('**Need an automated source for this country?**')
+    st.write('A new connector needs a documented RSS/Atom feed or a country-specific API/HTML parser with legal-text and exact-document extraction. The current release supports RSS and Atom only. Add a validated feed using **Settings & sources**.')
+
 elif page=='Source coverage':
     st.title('European jurisdiction coverage')
-    st.caption('An enabled source is only a configured feed. Check last scan and successful response before interpreting coverage.')
+    st.caption('Configured feed, working scan and comprehensive country coverage are three different things. Saved portal bookmarks are never counted as active monitoring.')
     summary=[]
+    counts=directory_counts()
+    saved_bookmarks=bookmarks()
     for country in COUNTRIES:
         ss=[s for s in configured if s['country']==country]
         enabled=[s for s in ss if s['enabled']]
         ok=[s for s in enabled if s['last_ok_at'] and not s['last_error']]
         status='Not configured' if not enabled else ('Last scan successful (partial coverage)' if ok else 'Configured — not successfully scanned')
-        summary.append(dict(Jurisdiction=country,Source_feeds=len(enabled),Last_success=max([s['last_ok_at'] for s in ok],default=''),Status=status))
+        summary.append(dict(Jurisdiction=country,Source_feeds=len(enabled),Directory_entries=counts[country],Saved_portal_bookmarks=sum(x['country']==country for x in saved_bookmarks),Last_success=max([s['last_ok_at'] for s in ok],default=''),Status=status))
     st.dataframe(pd.DataFrame(summary),hide_index=True,use_container_width=True)
     st.download_button('Export coverage CSV',pd.DataFrame(summary).to_csv(index=False).encode(),'source_coverage.csv','text/csv')
     st.subheader('Recent scan diagnostics')

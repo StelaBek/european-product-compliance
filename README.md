@@ -65,3 +65,27 @@ pytest -q
 ## Future production roadmap
 
 Add feed-source-specific document ID validation and legislative version comparison, national-language translation grounded to source spans, reviewer authentication, PostgreSQL persistence, background scheduling, full official-source coverage, change-event detection and measurement of false positives/false negatives against manually curated legislation.
+
+## Country source directory (v2.1)
+
+Open **Country source directory** in the sidebar. Select any jurisdiction in the
+European coverage register. The directory contains a curated selection of
+national legislation portals, EU e-Justice country guides for EU members, and
+the existing two automatic RSS/Atom connector suggestions.
+
+- **Add this official feed** registers an RSS/Atom feed in the scanner, if not
+  already configured. You must run a scan and inspect **Source coverage**.
+- **Open official portal / guide** opens a national law website or an EU guide.
+- **Save research bookmark** saves the portal as a bookmark in SQLite. It **does
+  not** enable monitoring and never contributes to feed coverage metrics.
+- Countries with no curated entry are marked as **coverage gaps**. This is by
+  design; the app never guesses a government feed address.
+- The directory is a starting list, not a guarantee of completeness or a
+  substitute for reviewing legal acts. Portals are often homepage links and
+  must not be cited as a specific legal finding.
+
+The app supports a jurisdiction's official RSS/Atom feeds, but **not general
+HTML crawling, PDF extraction, and APIs** at present. Adding these is separate
+future work requiring testing and a legal-source-specific connector. Research
+bookmarks and feed settings are saved in the local SQLite database, which may
+be ephemeral on Streamlit Community Cloud.
