@@ -1,91 +1,50 @@
-# European Product Compliance Monitor v2
+# European Product Compliance Monitor v3
 
-An independent **Streamlit** starter application for monitoring official European legislation feeds and reviewing possible product-compliance developments.
+An open-source **prototype**, not an authoritative legal alert service. Product relevance is a keyword-based *suggestion*. The system does not prove a legal change, application date or a country's comprehensive legal coverage. Never make testing, blocking or launch decisions from a candidate record without reviewing the underlying legal instrument.
 
-## What's included
+## What's new from v2.1
 
-- Clean dashboard, candidate findings cards, country/category/search filters, CSV export.
-- Exact legal-document links from RSS/Atom items (no homepage substitution).
-- Separate **retrieval** and **human verification** statuses; no ungrounded legal conclusions.
-- A manual review queue that requires rationale before confirming relevance.
-- Source-health reporting and 47+ country/jurisdiction coverage register (not a claim of active monitoring).
-- Broad e-commerce taxonomy: furniture, toys, chemicals, general safety, machinery, electrical, packaging, textiles and more.
-- Two starter official feeds: EUR-Lex Official Journal L and UK legislation new acts.
-- Unit tests for the wrong-regulation / generic-reference / off-domain URL cases.
+- Jurisdiction-by-jurisdiction source registry for **all countries in `catalog.COUNTRIES`**. Entries distinguish **actual feed endpoints** from **reference-only legislative portals**.
+- Three initially configured official feeds: **EUR-Lex, UK legislation, Germany**. A supplemental Norway Lovdata news feed is available as an optional connector; it is **not** a statutory law feed.
+- A source listing only becomes **last scan successful (partial coverage)** after a successful retrieval, not because it is included in the directory.
+- Daily GitHub Actions scan with a committed public `data/snapshot.json` for use by Streamlit Community Cloud. You can also run manually using Actions > Scan official source feeds > Run workflow.
+- Persistent public *candidate findings* via GitHub snapshots. A review decision recorded in Streamlit's local SQLite database is **not persistent across restarts**. Do **not** add confidential notes to `data/snapshot.json`.
+- Exact document links (where supplied by publisher), conservative excerpt-backed summaries, a human verification queue, and product taxonomy.
 
-## Quick start
+## How to deploy
 
-Requires Python 3.10+.
+1. Create a new GitHub repository (or upload and overwrite your existing app's files) with all project files **at the repository root**. Ensure the hidden `.github/workflows/scan.yml` file is uploaded; the web uploader may hide folders beginning with a dot. If needed create it in GitHub using Add file > Create new file and path `.github/workflows/scan.yml`.
+2. In GitHub, open **Settings > Actions > General > Workflow permissions** and choose **Read and write permissions** to permit committing the public snapshot. Your organisation may restrict this option.
+3. Open **Actions > Scan official source feeds > Run workflow**. Check logs for source errors. This workflow is also scheduled once daily; scheduled GitHub Actions can run late or be disabled in inactive repositories.
+4. Connect the repository to Streamlit Community Cloud at https://share.streamlit.io and set main file to `app.py`. No API key is required.
+5. In **Country source directory**, enable suggested feeds where available. Only repository-configured seeds participate in automated daily GitHub Actions scans unless you also edit `catalog.STARTER_SOURCES`. **Adding a feed in the Streamlit UI is local and will not configure it for GitHub Actions**.
+6. Check **Source coverage** after a completed scan. Inspect source errors and open exact source documents. Do not interpret `healthy` as exhaustive coverage.
+
+## Local development
 
 ```bash
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
-```
-
-Open the local URL printed by Streamlit, then click **Scan configured feeds**. Internet access is required. A source may block requests or provide only abstracts; the app will expose scan errors instead of inventing findings. The app does not require API keys.
-
-For command-line scanning:
-
-```bash
+# in another terminal:
 python scan.py
 pytest -q
 ```
 
-## Deploy on Streamlit Community Cloud
+## Critical limitations
 
-1. Create a **new GitHub repository**, upload all files (including `catalog.py`, `monitor.py`, `storage.py`, `app.py`, `requirements.txt`).
-2. In Streamlit Community Cloud select that repository and `app.py` as the entry point.
-3. Start the app and scan. **Important:** SQLite on ephemeral cloud storage may reset after deployment/restarts. Use persistent PostgreSQL or external managed storage before production use; do not commit the live SQLite file to a public repository.
-4. Set a private deployment or add authentication before uploading confidential product data. The starter does not implement user accounts.
+- The current automated connectors cover only EU-wide, UK and German legal publication feeds. A country directory entry does **not** mean the country is monitored.
+- RSS/Atom feeds are not exhaustive even for the three configured jurisdictions. Country-specific product regulator sources and primary-document APIs are still needed.
+- We have not performed live integration testing from the deployment environment. Source endpoint availability must be checked in GitHub Actions logs.
+- HTML/PDF full legal-text parsing, advanced deduplication, amendment comparison, native-language classification, and machine-verifiable applicability dates remain future work.
+- SQLite reviews, manually added feeds, and bookmarks in the Streamlit UI are temporary on Community Cloud. Use a hosted database (e.g. managed Postgres) for durable reviewer data before production.
+- Github snapshot JSON is committed to the repository; therefore **never put confidential commercial data or notes in it**.
+- An RSS item can link to a landing page, even if it is a deep URL. The app does not treat that as verified amendment evidence.
 
-## Limitations — read before using operationally
+## Initial country feed references
 
-**This is a functioning prototype, not a complete European regulatory-monitoring service.** It registers jurisdictions but initially scans **only two** official feeds. To cover countries comprehensively, add and maintain country-specific official connectors, official gazette feeds, regulators, product recall services and notification systems. Feed-only monitoring can miss amendments, guidance and entries not published through those feeds. No application can guarantee detection of all European regulatory developments.
+- EU: `https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165`
+- UK: `https://www.legislation.gov.uk/new/data.feed`
+- Germany: `https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml` — [publisher documentation](https://www.gesetze-im-internet.de/aktuDienst.html).
+- Norway (optional *supplemental news*): `https://lovdata.no/feed?data=newArticles&type=RSS` (not a legal gazette feed).
 
-- A successfully retrieved page is **not** equivalent to proof that a legal requirement changed. A reviewer must read and assess the actual legal text and implementation rules.
-- Summaries quote or describe **only the source title and feed excerpt**. The app deliberately does not hallucinate specific obligations, deadlines or affected SKUs. For high-quality actionable summaries, add an evidence-grounded structured extraction pipeline and reviewer approval.
-- Product categories and topics are **heuristic suggestions**, not legal applicability decisions. Search for and classify all categories relevant to each item.
-- Direct links point to the feed's individual item; some publishers link to summary pages rather than article-level sections. An exact article/PDF-page deep link requires a publisher-specific connector.
-- The app does not use arbitrary web search as evidence of a legislative amendment. Feed retrieval failures are logged.
-- The default database is SQLite and the UI has no login. This is suited to a single-user local prototype.
-- Source URLs must be HTTPS and stay on their registered domain. Add sources only from official regulators; for hosted multiuser versions, enforce server-side network allowlists to prevent SSRF.
-
-## Project files
-
-- `app.py`: UI and review workflow
-- `monitor.py`: feed retrieval, document-level links, conservative product-category matches
-- `catalog.py`: geographic register, taxonomy, official starter feeds
-- `storage.py`: SQLite persistence
-- `scan.py`: optional headless scan
-- `tests/test_monitor.py`: source and classification tests
-
-## Future production roadmap
-
-Add feed-source-specific document ID validation and legislative version comparison, national-language translation grounded to source spans, reviewer authentication, PostgreSQL persistence, background scheduling, full official-source coverage, change-event detection and measurement of false positives/false negatives against manually curated legislation.
-
-## Country source directory (v2.1)
-
-Open **Country source directory** in the sidebar. Select any jurisdiction in the
-European coverage register. The directory contains a curated selection of
-national legislation portals, EU e-Justice country guides for EU members, and
-the existing two automatic RSS/Atom connector suggestions.
-
-- **Add this official feed** registers an RSS/Atom feed in the scanner, if not
-  already configured. You must run a scan and inspect **Source coverage**.
-- **Open official portal / guide** opens a national law website or an EU guide.
-- **Save research bookmark** saves the portal as a bookmark in SQLite. It **does
-  not** enable monitoring and never contributes to feed coverage metrics.
-- Countries with no curated entry are marked as **coverage gaps**. This is by
-  design; the app never guesses a government feed address.
-- The directory is a starting list, not a guarantee of completeness or a
-  substitute for reviewing legal acts. Portals are often homepage links and
-  must not be cited as a specific legal finding.
-
-The app supports a jurisdiction's official RSS/Atom feeds, but **not general
-HTML crawling, PDF extraction, and APIs** at present. Adding these is separate
-future work requiring testing and a legal-source-specific connector. Research
-bookmarks and feed settings are saved in the local SQLite database, which may
-be ephemeral on Streamlit Community Cloud.
+Always test feed URL availability in the deployment environment before relying on the resulting status.

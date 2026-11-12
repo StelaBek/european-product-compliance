@@ -10,9 +10,13 @@ from catalog import CATEGORIES, COUNTRIES, EU, OTHER_EEA, OTHER_EUROPE
 from storage import init_db, findings, sources, logs, add_source, update_review, set_source_enabled, add_bookmark, bookmarks, remove_bookmark
 from monitor import scan_all, host_allowed
 from source_directory import directory_for, directory_counts
+from registry_v3 import registry_rows, registry_summary, OFFICIAL_FEEDS
+from storage import import_snapshot
 
 st.set_page_config(page_title='Product Compliance Monitor',page_icon='🛡️',layout='wide',initial_sidebar_state='expanded')
 init_db()
+# Load scheduled public scan results after every Streamlit restart.
+import_snapshot()
 
 st.markdown('''<style>
 .block-container{padding-top:1.5rem;max-width:1440px}
@@ -125,18 +129,20 @@ elif page=='Review queue':
 
 elif page=='Country source directory':
     st.title('European official-source directory')
-    st.caption('Select a country to find curated legislation portals and available automated feeds. A portal bookmark does not scan legislation. Countries with no vetted entries are explicitly marked as gaps.')
+    st.caption('Find country-specific legislation portals and documented feed endpoints. A listed source is not proof of reliable or comprehensive monitoring.')
     country=st.selectbox('Select jurisdiction',COUNTRIES,index=COUNTRIES.index('Finland'))
     entries=directory_for(country)
+    vetted=registry_rows().get(country,[])
+    vetted_feeds=[x for x in vetted if x['connector']=='feed']
     active_urls={s['url'] for s in configured if s['enabled']}
     saved_urls={b['url'] for b in bookmarks(country)}
-    auto=[x for x in entries if x['connector']=='feed']
+    auto=[x for x in vetted_feeds]
     portals=[x for x in entries if x['connector']=='portal']
     a,b,c=st.columns(3)
     a.metric('Curated references',len(entries))
     b.metric('Auto-feed suggestions',len(auto))
     c.metric('Active configured feeds',sum(s['country']==country and s['enabled'] for s in configured))
-    if not entries:
+    if not entries and not vetted_feeds:
         st.warning('No curated entries for this jurisdiction yet. This is a source-coverage gap, not confirmation that no regulation exists.')
         st.markdown('Use the manual RSS/Atom form under **Settings & sources** once an official feed endpoint has been verified. Do not enter an ordinary homepage as a feed.')
     if auto:
@@ -185,16 +191,18 @@ elif page=='Country source directory':
 
 elif page=='Source coverage':
     st.title('European jurisdiction coverage')
+    st.info('Country-level sources are listed separately. Only working scans count as partial monitoring. No country is certified as comprehensively covered.')
     st.caption('Configured feed, working scan and comprehensive country coverage are three different things. Saved portal bookmarks are never counted as active monitoring.')
     summary=[]
     counts=directory_counts()
+    detailed={r['country']:r for r in registry_summary(configured)}
     saved_bookmarks=bookmarks()
     for country in COUNTRIES:
         ss=[s for s in configured if s['country']==country]
         enabled=[s for s in ss if s['enabled']]
         ok=[s for s in enabled if s['last_ok_at'] and not s['last_error']]
-        status='Not configured' if not enabled else ('Last scan successful (partial coverage)' if ok else 'Configured — not successfully scanned')
-        summary.append(dict(Jurisdiction=country,Source_feeds=len(enabled),Directory_entries=counts[country],Saved_portal_bookmarks=sum(x['country']==country for x in saved_bookmarks),Last_success=max([s['last_ok_at'] for s in ok],default=''),Status=status))
+        status=detailed[country]['status']
+        summary.append(dict(Jurisdiction=country,Source_feeds=len(enabled),Suggested_feeds=detailed[country]['suggested_feeds'],Directory_entries=counts[country],Saved_portal_bookmarks=sum(x['country']==country for x in saved_bookmarks),Last_success=max([s['last_ok_at'] for s in ok],default=''),Status=status))
     st.dataframe(pd.DataFrame(summary),hide_index=True,use_container_width=True)
     st.download_button('Export coverage CSV',pd.DataFrame(summary).to_csv(index=False).encode(),'source_coverage.csv','text/csv')
     st.subheader('Recent scan diagnostics')

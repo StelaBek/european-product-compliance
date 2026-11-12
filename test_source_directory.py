@@ -9,9 +9,9 @@ def test_all_countries_represented_without_fabricated_feeds():
     assert all(e['country'] in COUNTRIES for e in DIRECTORY)
     assert all(e['connector'] in {'feed','portal'} for e in DIRECTORY)
 
-def test_only_two_feed_connectors_and_portals_not_feeds():
+def test_configured_feed_connectors_and_portals_not_feeds():
     feeds=[e for e in DIRECTORY if e['connector']=='feed']
-    assert len(feeds)==2
+    assert len(feeds)==3
     assert all(e['kind'] in ('rss','atom') for e in feeds)
     assert all(e['kind'] is None for e in DIRECTORY if e['connector']=='portal')
 

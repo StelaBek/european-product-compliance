@@ -35,4 +35,5 @@ TOPICS = {
 STARTER_SOURCES = [
  dict(name='EUR-Lex — Official Journal L acts', country='European Union', kind='rss', url='https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165', official_domain='eur-lex.europa.eu'),
  dict(name='UK legislation — New legislation', country='United Kingdom', kind='atom', url='https://www.legislation.gov.uk/new/data.feed', official_domain='legislation.gov.uk'),
+ dict(name='Germany — Federal legislation updates',country='Germany',kind='rss',url='https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml',official_domain='gesetze-im-internet.de'),
 ]

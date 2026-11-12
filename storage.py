@@ -109,3 +109,45 @@ def bookmarks(country=None):
 def remove_bookmark(bookmark_id):
     with connection() as con:
         con.execute('DELETE FROM directory_bookmarks WHERE id=?',(bookmark_id,))
+
+# Snapshot storage permits GitHub Actions to persist public monitoring results in
+# the repository instead of relying on Streamlit Community Cloud's ephemeral disk.
+def export_snapshot(path='data/snapshot.json'):
+    from pathlib import Path
+    public_rows=[]
+    for row in findings():
+        row['notes']=''
+        row['review_status']='Needs review'
+        public_rows.append(row)
+    payload={'schema_version':1,'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'sources':sources(),'findings':public_rows,'logs':logs(500)}
+    p=Path(path);p.parent.mkdir(parents=True,exist_ok=True)
+    p.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
+    return len(payload['findings'])
+
+
+def import_snapshot(path='data/snapshot.json'):
+    from pathlib import Path
+    p=Path(path)
+    if not p.exists():return 0
+    data=json.loads(p.read_text(encoding='utf-8'))
+    if data.get('schema_version')!=1:raise ValueError('Unsupported snapshot schema')
+    imported=0
+    with connection() as con:
+        for src in data.get('sources',[]):
+            con.execute('''INSERT OR IGNORE INTO sources(name,country,kind,url,official_domain,enabled,checked_at,last_ok_at,last_error,last_items)
+              VALUES(?,?,?,?,?,?,?,?,?,?)''',tuple(src.get(k) for k in ('name','country','kind','url','official_domain','enabled','checked_at','last_ok_at','last_error','last_items')))
+            con.execute('''UPDATE sources SET checked_at=?,last_ok_at=?,last_error=?,last_items=? WHERE url=? AND (checked_at IS NULL OR checked_at<?)''',
+                (src.get('checked_at'),src.get('last_ok_at'),src.get('last_error'),src.get('last_items'),src['url'],src.get('checked_at') or ''))
+        url_for_id={s['id']:s['url'] for s in data.get('sources',[])}
+        id_for_url={r['url']:r['id'] for r in con.execute('SELECT id,url FROM sources')}
+        for f in data.get('findings',[]):
+            src_url=url_for_id.get(f.get('source_id'))
+            if src_url not in id_for_url:continue
+            f=dict(f);f['source_id']=id_for_url[src_url]
+            for key in ('categories','topics'):
+                if not isinstance(f[key],str):f[key]=json.dumps(f[key])
+            con.execute('''INSERT OR IGNORE INTO findings(id,source_id,title,country,document_url,evidence_url,legal_reference,published_at,first_seen,last_seen,text_excerpt,categories,topics,summary,business_action,verification,review_status,notes)
+                VALUES(:id,:source_id,:title,:country,:document_url,:evidence_url,:legal_reference,:published_at,:first_seen,:last_seen,:text_excerpt,:categories,:topics,:summary,:business_action,:verification,:review_status,:notes)''',f)
+            imported+=1
+    return imported

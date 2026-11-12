@@ -127,10 +127,17 @@ def item_date(entry):
 def process_entry(source,entry):
     title=clean_html(entry.get('title',''))[:500]
     doc_url=urldefrag(entry.get('link',''))[0]
-    if not title or not is_document_url(doc_url,source['url']) or not host_allowed(doc_url,source['official_domain']):
+    if not title or not is_document_url(doc_url,source['url']):
+        return None
+    # A specific cross-domain German federal gazette is an explicitly permitted
+    # document publisher, not arbitrary third-party links or portal homepages.
+    doc_domain=source['official_domain']
+    if source['country']=='Germany' and host_allowed(doc_url,'recht.bund.de'):
+        doc_domain='recht.bund.de'
+    if not host_allowed(doc_url,doc_domain):
         return None
     feed_excerpt=clean_html(entry.get('summary',''))[:3000]
-    doc_text,verified,reason=retrieved_document(doc_url,source['official_domain'])
+    doc_text,verified,reason=retrieved_document(doc_url,doc_domain)
     # Use feed title as original title. Feed excerpt is evidence, not proof of legal effect.
     categories,topics=classify(title,feed_excerpt + ' '+doc_text[:4000])
     if not categories:return None
