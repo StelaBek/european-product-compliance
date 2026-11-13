@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T12:52:13.406963+00:00",
+  "generated_at": "2026-11-13T14:24:38.042578+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,10 +10,10 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-12T12:51:56.102923+00:00",
-      "last_ok_at": "2026-11-12T12:51:56.102923+00:00",
+      "checked_at": "2026-11-13T14:24:20.795714+00:00",
+      "last_ok_at": "2026-11-13T14:24:20.795714+00:00",
       "last_error": "",
-      "last_items": 1
+      "last_items": 3
     },
     {
       "id": 3,
@@ -23,7 +23,7 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-12T12:52:13.262806+00:00",
+      "checked_at": "2026-11-13T14:24:37.930024+00:00",
       "last_ok_at": null,
       "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
       "last_items": 0
@@ -36,13 +36,86 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-12T12:52:13.403776+00:00",
-      "last_ok_at": "2026-11-12T12:52:13.403776+00:00",
+      "checked_at": "2026-11-13T14:24:38.040232+00:00",
+      "last_ok_at": "2026-11-13T14:24:38.040232+00:00",
       "last_error": "",
       "last_items": 0
     }
   ],
   "findings": [
+    {
+      "id": "2bcd139c92d6699f24be2127",
+      "source_id": 1,
+      "title": "CELEX:32026R2517: Commission Implementing Regulation (EU) 2026/2517 of 12 November 2026 concerning the non-renewal of the approval of the active substance buprofezin, in accordance with Regulation (EC) No 1107/2009 of the European Parliament and of the Council, and amending Commission Implementing Regulation (EU) No 540/2011",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2517",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2517",
+      "legal_reference": "CELEX:32026R2517",
+      "published_at": "2026-11-13",
+      "first_seen": "2026-11-13T14:24:18.094116+00:00",
+      "last_seen": "2026-11-13T14:24:18.094116+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Chemicals & materials"
+      ],
+      "topics": [],
+      "summary": "Official source entry: CELEX:32026R2517: Commission Implementing Regulation (EU) 2026/2517 of 12 November 2026 concerning the non-renewal of the approval of the active substance buprofezin, in accordance with Regulation (EC) No 1107/2009 of the European Parliament and of the Council, and amending Commission Implementing Regulation (EU) No 540/2011. The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    },
+    {
+      "id": "a2e3118ebb440f880a95f25c",
+      "source_id": 1,
+      "title": "CELEX:32026R2501: Commission Regulation (EU) 2026/2501 of 12 November 2026 amending Annex XVII to Regulation (EC) No 1907/2006 of the European Parliament and of the Council concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) as regards lead in certain fishing tackle",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2501",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2501",
+      "legal_reference": "CELEX:32026R2501",
+      "published_at": "2026-11-13",
+      "first_seen": "2026-11-13T14:24:18.633032+00:00",
+      "last_seen": "2026-11-13T14:24:18.633032+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Chemicals & materials"
+      ],
+      "topics": [
+        "Chemical restrictions"
+      ],
+      "summary": "Official source entry: CELEX:32026R2501: Commission Regulation (EU) 2026/2501 of 12 November 2026 amending Annex XVII to Regulation (EC) No 1907/2006 of the European Parliament and of the Council concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) as regards lead in certain fishing tackle. The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    },
+    {
+      "id": "8874368296e36216065a43a2",
+      "source_id": 1,
+      "title": "CELEX:32026D2505: Commission Implementing Decision (EU) 2026/2505 of 12 November 2026 correcting Commission Implementing Decision (EU) 2026/1971 amending Commission Implementing Decision (EU) 2026/1279 as regards the harmonised standards for protective gloves for hairdressers, protective clothing against rain, and eye and face protection for occupational use drafted in support of Regulation (EU) 2016/425 of the European Parliament and of the Council",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026D2505",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026D2505",
+      "legal_reference": "CELEX:32026D2505",
+      "published_at": "2026-11-13",
+      "first_seen": "2026-11-13T14:24:18.925229+00:00",
+      "last_seen": "2026-11-13T14:24:18.925229+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Textiles & apparel"
+      ],
+      "topics": [
+        "Testing & standards"
+      ],
+      "summary": "Official source entry: CELEX:32026D2505: Commission Implementing Decision (EU) 2026/2505 of 12 November 2026 correcting Commission Implementing Decision (EU) 2026/1971 amending Commission Implementing Decision (EU) 2026/1279 as regards the harmonised standards for protective gloves for hairdressers, protective clothing against rain, and eye and face protection for occupational use drafted in support of Regulation (EU) 2016/425 of the European Parliament and of the Council. The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    },
     {
       "id": "728c5a2b55eed30bc94107c1",
       "source_id": 1,
@@ -73,7 +146,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-12T12:52:13.403776+00:00",
+      "scanned_at": "2026-11-13T14:24:38.040232+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -82,7 +155,7 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-12T12:52:13.262806+00:00",
+      "scanned_at": "2026-11-13T14:24:37.930024+00:00",
       "result": "failed",
       "items": 0,
       "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
@@ -91,9 +164,9 @@
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-12T12:51:56.102923+00:00",
+      "scanned_at": "2026-11-13T14:24:20.795714+00:00",
       "result": "ok",
-      "items": 1,
+      "items": 3,
       "error": "",
       "source_name": "EUR-Lex — Official Journal L acts"
     }
