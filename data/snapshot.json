@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T14:24:38.042578+00:00",
+  "generated_at": "2026-11-14T13:20:48.367820+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,10 +10,10 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-13T14:24:20.795714+00:00",
+      "checked_at": "2026-11-14T13:20:31.468679+00:00",
       "last_ok_at": "2026-11-13T14:24:20.795714+00:00",
-      "last_error": "",
-      "last_items": 3
+      "last_error": "Not valid feed XML",
+      "last_items": 0
     },
     {
       "id": 3,
@@ -23,7 +23,7 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-13T14:24:37.930024+00:00",
+      "checked_at": "2026-11-14T13:20:48.256774+00:00",
       "last_ok_at": null,
       "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
       "last_items": 0
@@ -36,8 +36,8 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-13T14:24:38.040232+00:00",
-      "last_ok_at": "2026-11-13T14:24:38.040232+00:00",
+      "checked_at": "2026-11-14T13:20:48.365298+00:00",
+      "last_ok_at": "2026-11-14T13:20:48.365298+00:00",
       "last_error": "",
       "last_items": 0
     }
@@ -146,7 +146,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-13T14:24:38.040232+00:00",
+      "scanned_at": "2026-11-14T13:20:48.365298+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -155,7 +155,7 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-13T14:24:37.930024+00:00",
+      "scanned_at": "2026-11-14T13:20:48.256774+00:00",
       "result": "failed",
       "items": 0,
       "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
@@ -164,10 +164,10 @@
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-13T14:24:20.795714+00:00",
-      "result": "ok",
-      "items": 3,
-      "error": "",
+      "scanned_at": "2026-11-14T13:20:31.468679+00:00",
+      "result": "failed",
+      "items": 0,
+      "error": "Not valid feed XML",
       "source_name": "EUR-Lex — Official Journal L acts"
     }
   ]
