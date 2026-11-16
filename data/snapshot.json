@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-15T13:48:33.891573+00:00",
+  "generated_at": "2026-11-16T15:28:52.233173+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,10 +10,10 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-15T13:48:16.516039+00:00",
-      "last_ok_at": "2026-11-13T14:24:20.795714+00:00",
-      "last_error": "Not valid feed XML",
-      "last_items": 0
+      "checked_at": "2026-11-16T15:28:35.298409+00:00",
+      "last_ok_at": "2026-11-16T15:28:35.298409+00:00",
+      "last_error": "",
+      "last_items": 3
     },
     {
       "id": 3,
@@ -23,7 +23,7 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-15T13:48:33.680702+00:00",
+      "checked_at": "2026-11-16T15:28:52.110742+00:00",
       "last_ok_at": null,
       "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
       "last_items": 0
@@ -36,8 +36,8 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-15T13:48:33.889062+00:00",
-      "last_ok_at": "2026-11-15T13:48:33.889062+00:00",
+      "checked_at": "2026-11-16T15:28:52.229503+00:00",
+      "last_ok_at": "2026-11-16T15:28:52.229503+00:00",
       "last_error": "",
       "last_items": 0
     }
@@ -53,7 +53,7 @@
       "legal_reference": "CELEX:32026R2517",
       "published_at": "2026-11-13",
       "first_seen": "2026-11-13T14:24:18.094116+00:00",
-      "last_seen": "2026-11-13T14:24:18.094116+00:00",
+      "last_seen": "2026-11-16T15:28:33.440620+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Chemicals & materials"
@@ -76,7 +76,7 @@
       "legal_reference": "CELEX:32026R2501",
       "published_at": "2026-11-13",
       "first_seen": "2026-11-13T14:24:18.633032+00:00",
-      "last_seen": "2026-11-13T14:24:18.633032+00:00",
+      "last_seen": "2026-11-16T15:28:34.170811+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Chemicals & materials"
@@ -101,7 +101,7 @@
       "legal_reference": "CELEX:32026D2505",
       "published_at": "2026-11-13",
       "first_seen": "2026-11-13T14:24:18.925229+00:00",
-      "last_seen": "2026-11-13T14:24:18.925229+00:00",
+      "last_seen": "2026-11-16T15:28:34.251205+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Textiles & apparel"
@@ -146,7 +146,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-15T13:48:33.889062+00:00",
+      "scanned_at": "2026-11-16T15:28:52.229503+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -155,7 +155,7 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-15T13:48:33.680702+00:00",
+      "scanned_at": "2026-11-16T15:28:52.110742+00:00",
       "result": "failed",
       "items": 0,
       "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
@@ -164,10 +164,10 @@
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-15T13:48:16.516039+00:00",
-      "result": "failed",
-      "items": 0,
-      "error": "Not valid feed XML",
+      "scanned_at": "2026-11-16T15:28:35.298409+00:00",
+      "result": "ok",
+      "items": 3,
+      "error": "",
       "source_name": "EUR-Lex — Official Journal L acts"
     }
   ]
