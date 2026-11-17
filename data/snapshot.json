@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-16T15:28:52.233173+00:00",
+  "generated_at": "2026-11-17T15:49:56.018404+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,10 +10,10 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-16T15:28:35.298409+00:00",
-      "last_ok_at": "2026-11-16T15:28:35.298409+00:00",
+      "checked_at": "2026-11-17T15:49:39.018953+00:00",
+      "last_ok_at": "2026-11-17T15:49:39.018953+00:00",
       "last_error": "",
-      "last_items": 3
+      "last_items": 5
     },
     {
       "id": 3,
@@ -23,7 +23,7 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-16T15:28:52.110742+00:00",
+      "checked_at": "2026-11-17T15:49:55.929984+00:00",
       "last_ok_at": null,
       "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
       "last_items": 0
@@ -36,13 +36,63 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-16T15:28:52.229503+00:00",
-      "last_ok_at": "2026-11-16T15:28:52.229503+00:00",
+      "checked_at": "2026-11-17T15:49:56.002688+00:00",
+      "last_ok_at": "2026-11-17T15:49:56.002688+00:00",
       "last_error": "",
       "last_items": 0
     }
   ],
   "findings": [
+    {
+      "id": "47709939fd91f9bd5b298cdd",
+      "source_id": 1,
+      "title": "CELEX:32026R2530: Commission Regulation (EU) 2026/2530 of 16 November 2026 amending Annex XVII to Regulation (EC) No 1907/2006 of the European Parliament and of the Council concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) as regards lead in gunshot",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2530",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2530",
+      "legal_reference": "CELEX:32026R2530",
+      "published_at": "2026-11-17",
+      "first_seen": "2026-11-17T15:49:36.245615+00:00",
+      "last_seen": "2026-11-17T15:49:36.245615+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Chemicals & materials"
+      ],
+      "topics": [
+        "Chemical restrictions"
+      ],
+      "summary": "Official source entry: CELEX:32026R2530: Commission Regulation (EU) 2026/2530 of 16 November 2026 amending Annex XVII to Regulation (EC) No 1907/2006 of the European Parliament and of the Council concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) as regards lead in gunshot. The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    },
+    {
+      "id": "22edffca5f08b7b1c00850cf",
+      "source_id": 1,
+      "title": "CELEX:32026R2501R(01): Corrigendum to Commission Regulation (EU) 2026/2501 of 12 November 2026 amending Annex XVII to Regulation (EC) No 1907/2006 of the European Parliament and of the Council concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) as regards lead in certain fishing tackle (OJ L, 2026/2501, 13.11.2026)",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2501R(01)",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32026R2501R(01)",
+      "legal_reference": "Regulation (EU) 2026/2501",
+      "published_at": "2026-11-17",
+      "first_seen": "2026-11-17T15:49:36.493248+00:00",
+      "last_seen": "2026-11-17T15:49:36.493248+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Chemicals & materials"
+      ],
+      "topics": [
+        "Chemical restrictions"
+      ],
+      "summary": "Official source entry: CELEX:32026R2501R(01): Corrigendum to Commission Regulation (EU) 2026/2501 of 12 November 2026 amending Annex XVII to Regulation (EC) No 1907/2006 of the European Parliament and of the Council concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) as regards lead in certain fishing tackle (OJ L, 2026/2501, 13.11.2026). The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    },
     {
       "id": "2bcd139c92d6699f24be2127",
       "source_id": 1,
@@ -53,7 +103,7 @@
       "legal_reference": "CELEX:32026R2517",
       "published_at": "2026-11-13",
       "first_seen": "2026-11-13T14:24:18.094116+00:00",
-      "last_seen": "2026-11-16T15:28:33.440620+00:00",
+      "last_seen": "2026-11-17T15:49:37.945850+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Chemicals & materials"
@@ -76,7 +126,7 @@
       "legal_reference": "CELEX:32026R2501",
       "published_at": "2026-11-13",
       "first_seen": "2026-11-13T14:24:18.633032+00:00",
-      "last_seen": "2026-11-16T15:28:34.170811+00:00",
+      "last_seen": "2026-11-17T15:49:38.864393+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Chemicals & materials"
@@ -101,7 +151,7 @@
       "legal_reference": "CELEX:32026D2505",
       "published_at": "2026-11-13",
       "first_seen": "2026-11-13T14:24:18.925229+00:00",
-      "last_seen": "2026-11-16T15:28:34.251205+00:00",
+      "last_seen": "2026-11-17T15:49:38.727033+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Textiles & apparel"
@@ -146,7 +196,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-16T15:28:52.229503+00:00",
+      "scanned_at": "2026-11-17T15:49:56.002688+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -155,7 +205,7 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-16T15:28:52.110742+00:00",
+      "scanned_at": "2026-11-17T15:49:55.929984+00:00",
       "result": "failed",
       "items": 0,
       "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
@@ -164,9 +214,9 @@
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-16T15:28:35.298409+00:00",
+      "scanned_at": "2026-11-17T15:49:39.018953+00:00",
       "result": "ok",
-      "items": 3,
+      "items": 5,
       "error": "",
       "source_name": "EUR-Lex — Official Journal L acts"
     }
