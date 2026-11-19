@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-18T15:28:46.650271+00:00",
+  "generated_at": "2026-11-19T15:35:19.623800+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,10 +10,10 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-18T15:28:29.953418+00:00",
-      "last_ok_at": "2026-11-18T15:28:29.953418+00:00",
+      "checked_at": "2026-11-19T15:35:02.613250+00:00",
+      "last_ok_at": "2026-11-19T15:35:02.613250+00:00",
       "last_error": "",
-      "last_items": 4
+      "last_items": 1
     },
     {
       "id": 3,
@@ -23,7 +23,7 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-18T15:28:46.586597+00:00",
+      "checked_at": "2026-11-19T15:35:19.510063+00:00",
       "last_ok_at": null,
       "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
       "last_items": 0
@@ -36,13 +36,36 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-18T15:28:46.646851+00:00",
-      "last_ok_at": "2026-11-18T15:28:46.646851+00:00",
+      "checked_at": "2026-11-19T15:35:19.620686+00:00",
+      "last_ok_at": "2026-11-19T15:35:19.620686+00:00",
       "last_error": "",
       "last_items": 0
     }
   ],
   "findings": [
+    {
+      "id": "741268d2a4ddf7498a13b3ff",
+      "source_id": 1,
+      "title": "CELEX:32025R1706R(02): Corrigendum to Commission Implementing Regulation (EU) 2025/1706 of 25 July 2025 laying down rules, procedures and testing methodologies for the application of Regulation (EU) 2024/1257 as regards exhaust and evaporative emission type-approval, in-vehicle battery durability, electric vehicle range at low temperature and electrified vehicle system power of vehicles of categories M1 and N1 and amending Implementing Regulation (EU) 2020/683 (OJ L, 2025/1706, 5.9.2025)",
+      "country": "European Union",
+      "document_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32025R1706R(02)",
+      "evidence_url": "https://eur-lex.europa.eu/./legal-content/AUTO/?uri=CELEX:32025R1706R(02)",
+      "legal_reference": "Regulation (EU) 2025/1706",
+      "published_at": "2026-11-19",
+      "first_seen": "2026-11-19T15:35:01.573179+00:00",
+      "last_seen": "2026-11-19T15:35:01.573179+00:00",
+      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "categories": [
+        "Batteries & energy"
+      ],
+      "topics": [],
+      "summary": "Official source entry: CELEX:32025R1706R(02): Corrigendum to Commission Implementing Regulation (EU) 2025/1706 of 25 July 2025 laying down rules, procedures and testing methodologies for the application of Regulation (EU) 2024/1257 as regards exhaust and evaporative emission type-approval, in-vehicle battery durability, electric vehicle range at low temperature and electrified vehicle system power of vehicles of categories M1 and N1 and amending Implementing Regulation (EU) 2020/683 (OJ L, 2025/1706, 5.9.2025). The feed does not explain the legal change.",
+      "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
+      "verification": "Retrieval incomplete — human review required",
+      "review_status": "Needs review",
+      "notes": "",
+      "source_name": "EUR-Lex — Official Journal L acts"
+    },
     {
       "id": "47709939fd91f9bd5b298cdd",
       "source_id": 1,
@@ -196,7 +219,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-18T15:28:46.646851+00:00",
+      "scanned_at": "2026-11-19T15:35:19.620686+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -205,7 +228,7 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-18T15:28:46.586597+00:00",
+      "scanned_at": "2026-11-19T15:35:19.510063+00:00",
       "result": "failed",
       "items": 0,
       "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
@@ -214,9 +237,9 @@
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-18T15:28:29.953418+00:00",
+      "scanned_at": "2026-11-19T15:35:02.613250+00:00",
       "result": "ok",
-      "items": 4,
+      "items": 1,
       "error": "",
       "source_name": "EUR-Lex — Official Journal L acts"
     }
