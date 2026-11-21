@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T15:14:44.612871+00:00",
+  "generated_at": "2026-11-21T14:30:07.612007+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,8 +10,8 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-20T15:14:27.181156+00:00",
-      "last_ok_at": "2026-11-20T15:14:27.181156+00:00",
+      "checked_at": "2026-11-21T14:29:50.293275+00:00",
+      "last_ok_at": "2026-11-21T14:29:50.293275+00:00",
       "last_error": "",
       "last_items": 2
     },
@@ -23,7 +23,7 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-20T15:14:44.573384+00:00",
+      "checked_at": "2026-11-21T14:30:07.493510+00:00",
       "last_ok_at": null,
       "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
       "last_items": 0
@@ -36,8 +36,8 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-20T15:14:44.610773+00:00",
-      "last_ok_at": "2026-11-20T15:14:44.610773+00:00",
+      "checked_at": "2026-11-21T14:30:07.609835+00:00",
+      "last_ok_at": "2026-11-21T14:30:07.609835+00:00",
       "last_error": "",
       "last_items": 0
     }
@@ -53,15 +53,15 @@
       "legal_reference": "CELEX:32026D2567",
       "published_at": "2026-11-20",
       "first_seen": "2026-11-20T15:14:26.175153+00:00",
-      "last_seen": "2026-11-20T15:14:26.175153+00:00",
-      "text_excerpt": "The official feed supplied a title but no explanatory text.",
+      "last_seen": "2026-11-21T14:29:28.820137+00:00",
+      "text_excerpt": "Implementing decision - EU - 2026/2567 - EN - EUR-Lex × Skip to main content EUR-Lex Access to European Union law This document is an excerpt from the EUR-Lex website You are here EUROPA EUR-Lex home Implementing decision - EU - 2026/2567 - EN - EUR-Lex Help Print Menu Quick search Use quotation marks to search for an \"exact phrase\". Append an asterisk ( * ) to a search term to find variations of it (transp * , 32019R * ). Use a question mark ( ? ) instead of a single character in your search term to find variations of it (ca ? e finds case, ca",
       "categories": [
         "Chemicals & materials"
       ],
       "topics": [],
       "summary": "Official source entry: CELEX:32026D2567: Commission Implementing Decision (EU) 2026/2567 of 19 November 2026 not renewing the approval of medetomidine as an active substance for use in biocidal products of product-type 21 in accordance with Regulation (EU) No 528/2012 of the European Parliament and of the Council. The feed does not explain the legal change.",
       "business_action": "Open the exact source document; confirm what changed, which products and economic operators are affected, and the effective date before taking compliance action.",
-      "verification": "Retrieval incomplete — human review required",
+      "verification": "Document retrieved — human review required",
       "review_status": "Needs review",
       "notes": "",
       "source_name": "EUR-Lex — Official Journal L acts"
@@ -76,7 +76,7 @@
       "legal_reference": "Regulation (EU) 2025/1706",
       "published_at": "2026-11-19",
       "first_seen": "2026-11-19T15:35:01.573179+00:00",
-      "last_seen": "2026-11-20T15:14:27.049967+00:00",
+      "last_seen": "2026-11-21T14:29:49.529028+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Batteries & energy"
@@ -242,7 +242,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-20T15:14:44.610773+00:00",
+      "scanned_at": "2026-11-21T14:30:07.609835+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -251,7 +251,7 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-20T15:14:44.573384+00:00",
+      "scanned_at": "2026-11-21T14:30:07.493510+00:00",
       "result": "failed",
       "items": 0,
       "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
@@ -260,7 +260,7 @@
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-20T15:14:27.181156+00:00",
+      "scanned_at": "2026-11-21T14:29:50.293275+00:00",
       "result": "ok",
       "items": 2,
       "error": "",
