@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T16:42:49.549195+00:00",
+  "generated_at": "2026-11-27T16:42:36.344441+00:00",
   "sources": [
     {
       "id": 1,
@@ -10,10 +10,10 @@
       "url": "https://eur-lex.europa.eu/EN/display-feed.rss?rssId=165",
       "official_domain": "eur-lex.europa.eu",
       "enabled": 1,
-      "checked_at": "2026-11-26T16:42:31.429806+00:00",
-      "last_ok_at": "2026-11-26T16:42:31.429806+00:00",
+      "checked_at": "2026-11-27T16:29:03.466144+00:00",
+      "last_ok_at": "2026-11-27T16:29:03.466144+00:00",
       "last_error": "",
-      "last_items": 3
+      "last_items": 2
     },
     {
       "id": 3,
@@ -23,9 +23,9 @@
       "url": "https://www.gesetze-im-internet.de/aktuDienst-rss-feed.xml",
       "official_domain": "gesetze-im-internet.de",
       "enabled": 1,
-      "checked_at": "2026-11-26T16:42:49.132203+00:00",
-      "last_ok_at": "2026-11-22T14:37:44.288222+00:00",
-      "last_error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
+      "checked_at": "2026-11-27T16:42:36.218329+00:00",
+      "last_ok_at": "2026-11-27T16:42:36.218329+00:00",
+      "last_error": "",
       "last_items": 0
     },
     {
@@ -36,8 +36,8 @@
       "url": "https://www.legislation.gov.uk/new/data.feed",
       "official_domain": "legislation.gov.uk",
       "enabled": 1,
-      "checked_at": "2026-11-26T16:42:49.475815+00:00",
-      "last_ok_at": "2026-11-26T16:42:49.475815+00:00",
+      "checked_at": "2026-11-27T16:42:36.342265+00:00",
+      "last_ok_at": "2026-11-27T16:42:36.342265+00:00",
       "last_error": "",
       "last_items": 0
     }
@@ -53,7 +53,7 @@
       "legal_reference": "CELEX:32026D2619",
       "published_at": "2026-11-24",
       "first_seen": "2026-11-24T17:24:39.984992+00:00",
-      "last_seen": "2026-11-26T16:42:29.668529+00:00",
+      "last_seen": "2026-11-27T16:29:02.081733+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Chemicals & materials"
@@ -79,7 +79,7 @@
       "legal_reference": "CELEX:32026D2576",
       "published_at": "2026-11-24",
       "first_seen": "2026-11-24T17:24:48.647354+00:00",
-      "last_seen": "2026-11-26T16:42:30.175615+00:00",
+      "last_seen": "2026-11-27T16:29:02.545270+00:00",
       "text_excerpt": "The official feed supplied a title but no explanatory text.",
       "categories": [
         "Chemicals & materials"
@@ -291,7 +291,7 @@
     {
       "id": 3,
       "source_id": 2,
-      "scanned_at": "2026-11-26T16:42:49.475815+00:00",
+      "scanned_at": "2026-11-27T16:42:36.342265+00:00",
       "result": "ok",
       "items": 0,
       "error": "",
@@ -300,18 +300,18 @@
     {
       "id": 2,
       "source_id": 3,
-      "scanned_at": "2026-11-26T16:42:49.132203+00:00",
-      "result": "failed",
+      "scanned_at": "2026-11-27T16:42:36.218329+00:00",
+      "result": "ok",
       "items": 0,
-      "error": "HTTPSConnectionPool(host='www.gesetze-im-internet.de', port=443): Max retries exceeded with url: /aktuDienst-rss-feed.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gesetze-im-internet.",
+      "error": "",
       "source_name": "Germany — Federal legislation updates"
     },
     {
       "id": 1,
       "source_id": 1,
-      "scanned_at": "2026-11-26T16:42:31.429806+00:00",
+      "scanned_at": "2026-11-27T16:29:03.466144+00:00",
       "result": "ok",
-      "items": 3,
+      "items": 2,
       "error": "",
       "source_name": "EUR-Lex — Official Journal L acts"
     }
